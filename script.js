@@ -133,17 +133,22 @@ const app = {
     if (this.currentIndex >= this.songs.length) {
       this.currentIndex = 0;
     }
+    const nextSong = document.querySelector(
+      `[data-index="${this.currentIndex}"]`
+    );
+    document.querySelector(".active").classList.remove("active");
+    nextSong.classList.add("active");
+    // this.render();
     this.loadCurrentSong();
-    this.render();
     this.scrollToActiveSong();
   },
+
   prevSong() {
     this.currentIndex--;
     if (this.currentIndex < 0) {
       this.currentIndex = this.songs.length - 1;
     }
     this.loadCurrentSong();
-    this.render();
     this.scrollToActiveSong();
   },
   playRandomSong() {
